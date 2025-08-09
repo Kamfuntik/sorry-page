@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I’m Sorry ❤️</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff7f0;
+        color: #5a3e2b;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    .message {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        z-index: 10;
+        position: relative;
+    }
+    h1 {
+        color: #a97c50;
+    }
+    button {
+        background-color: #a97c50;
+        color: white;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        margin: 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #8b6641;
+    }
+    .heart {
+        position: absolute;
+        color: #ff4d6d;
+        font-size: 20px;
+        animation: floatUp 6s linear infinite;
+    }
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) scale(1); opacity: 1; }
+        100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+    /* Yes message style */
+    .big-love {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 15px;
+        color: #ff4d6d;
+        animation: pop 0.5s ease forwards;
+    }
+    @keyframes pop {
+        0% { transform: scale(0.5); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    /* Sad emoji float */
+    .sad-emoji {
+        position: absolute;
+        font-size: 30px;
+        animation: sadFloat 3s linear infinite;
+    }
+    @keyframes sadFloat {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-40px); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="message">
+    <h1>I’m Sorry ❤️</h1>
+    <p>
+        I’m sorry for everything I’ve caused for us and how much it’s affected you.  
+        I really love you and I don’t know how it can be if I lose you.  
+        I just want you to be happy and I don’t like how I’ve made you cry  
+        and how I’ve made you feel these past months.  
+        It’s something I’ll never forgive myself for, and I don’t know if I’ll still  
+        be able to live with myself.  
+    </p>
+    <p>
+        I really love you and I’ll never hurt your feelings the way I’ve hurt them now ever again.  
+        You deserve way better than me and it would be easier to just be with someone else,  
+        but I’m grateful you still love me (I hope).  
+        I’ll try my best to be better for you because I know I haven’t been good at all.  
+    </p>
+
+    <h3>Do you still love me? ❤️</h3>
+    <button onclick="answerYes()">Yes</button>
+    <button onclick="answerNo()">No</button>
+
+    <p id="response" style="font-weight: bold; margin-top: 15px;"></p>
+</div>
+
+<script>
+// Floating hearts background
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 500);
+
+// Exploding hearts for YES
+function createBurstHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = 50 + Math.random() * 40 - 20 + "%";
+    heart.style.top = "50%";
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+    heart.style.animationDuration = (Math.random() * 2 + 1.5) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+}
+
+// Sad emoji for NO
+function createSadEmoji() {
+    const emoji = document.createElement("div");
+    emoji.classList.add("sad-emoji");
+    emoji.innerHTML = "🥹";
+    emoji.style.left = 50 + Math.random() * 20 - 10 + "%";
+    emoji.style.top = "55%";
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 3000);
+}
+
+// Button functions
+function answerYes() {
+    document.getElementById("response").innerHTML = `<span class="big-love">I love you more ❤️ I won’t hurt you like this again.</span>`;
+    for (let i = 0; i < 15; i++) {
+        setTimeout(createBurstHeart, i * 100);
+    }
+}
+
+function answerNo() {
+    document.getElementById("response").innerText = "I’ll try my best to win back your love ❤️";
+    for (let i = 0; i < 5; i++) {
+        setTimeout(createSadEmoji, i * 500);
+    }
+}
+</script>
+
+</body>
+</html>
